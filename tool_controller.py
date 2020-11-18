@@ -9,8 +9,23 @@ class ToolController:
             print("added " + tool_name)
     
     def get_curr_tool(self):
-        return self.curr_tool
+        if self.curr_tool:
+            return self.curr_tool[1]
+        
+        return None
 
     def select_tool(self, button_id):
-        self.curr_tool = self.tools[button_id]
-        print("You have selected " + self.curr_tool + " tool")
+        if self.curr_tool != None and self.curr_tool[1] != self.tools[button_id]:
+            
+            self.curr_tool[0]['bg'] = "gray64"
+            self.curr_tool[0]['fg'] = "white"
+            
+            self.curr_tool = (button_id, self.tools[button_id])
+            button_id['bg'] = "white"
+            button_id['fg'] = "black"
+        elif self.curr_tool == None:
+            self.curr_tool = (button_id, self.tools[button_id])
+            button_id['bg'] = "white"
+            button_id['fg'] = "black"
+
+        print("You have selected " + self.curr_tool[1] + " tool")
