@@ -18,4 +18,4 @@ class Circle:
         self.canvas.delete(self.id)
     
     def get_props(self):
-        return ["Line", self.start_x, self.start_y, self.end_x, self.end_y]
+        return ["Circle", self.start_x, self.start_y, self.end_x, self.end_y]

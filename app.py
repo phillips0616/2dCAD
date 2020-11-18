@@ -51,6 +51,6 @@ buildToolbar()
 root.update_idletasks() 
 sketchpad = Sketchpad(root, toolController)
 sketchpad.pack(expand=True, fill='both')
-sketchpad.draw_grid_overlay(12)
+sketchpad.draw_grid_overlay(18)
 
 root.mainloop()

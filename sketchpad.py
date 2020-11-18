@@ -38,8 +38,11 @@ class Sketchpad(Canvas):
         self.print_drawings()
     
     def print_drawings(self):
-        for item in self.drawings.items():
-            print(item)
+        for value in self.drawings.values():
+            print(value)
+    
+    def get_drawings(self):
+        return self.drawings
 
     def draw_grid_overlay(self, grid_size):
         self.update_idletasks()
@@ -48,8 +51,8 @@ class Sketchpad(Canvas):
         window_width = self.winfo_width()
         
         for r in range(0,window_width,grid_size):
-            self.create_line((r,0,r,window_height), width=0.5, fill="gray75")
+            self.create_line((r,0,r,window_height), width=0.5, fill="gray85")
 
         for r in range(0,window_height,grid_size):
-            self.create_line((0,r,window_width,r), width=0.5, fill="gray75")
+            self.create_line((0,r,window_width,r), width=0.5, fill="gray85")
 
