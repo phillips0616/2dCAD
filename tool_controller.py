@@ -12,8 +12,5 @@ class ToolController:
         return self.curr_tool
 
     def select_tool(self, button_id):
-        print(button_id)
         self.curr_tool = self.tools[button_id]
-        print(self.curr_tool)
-        #do something to let canvas know a new tool has been selected
         print("You have selected " + self.curr_tool + " tool")

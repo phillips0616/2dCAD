@@ -24,8 +24,8 @@ def buildMenu():
     menubar.add_cascade(label="File", menu=filemenu)
     root.config(menu=menubar)
 
+toolController = ToolController()
 def buildToolbar():
-    toolController = ToolController()
 
     #build frame for the toolbar that has the different drawing tools
     toolbar = Frame(root, bg="gray44")
@@ -47,7 +47,10 @@ def buildToolbar():
 buildMenu()
 buildToolbar()
 
-sketchpad = Sketchpad(root)
+
+root.update_idletasks() 
+sketchpad = Sketchpad(root, toolController)
 sketchpad.pack(expand=True, fill='both')
+sketchpad.draw_grid_overlay(12)
 
 root.mainloop()
