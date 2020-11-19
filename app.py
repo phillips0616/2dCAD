@@ -2,11 +2,12 @@ from tkinter import *
 import tkinter.font as font
 from tool_controller import ToolController
 from sketchpad import Sketchpad
+from file_cad import FileCAD
 from PIL import Image, ImageTk
 
 
 root = Tk()
-root.geometry("640x600")
+root.geometry("800x800")
 
 #build the basic file menu
 def donothing():
@@ -16,12 +17,11 @@ def buildMenu():
     menubar = Menu(root)
     filemenu = Menu(menubar, tearoff=0)
 
-    filemenu.add_command(label="New", command=donothing)
-    filemenu.add_command(label="Open", command=donothing)
-    filemenu.add_command(label="Save", command=donothing)
-    filemenu.add_command(label="Save as...", command=donothing)
-    filemenu.add_separator()
-    filemenu.add_command(label="Exit", command=root.quit)
+    filecad = FileCAD() # this needs to be called in a way that it can be passed the drawing properties...
+
+    filemenu.add_command(label="open", command=donothing)
+    filemenu.add_command(label="save", command=donothing)
+    filemenu.add_command(label="save as...", command=donothing)
 
     menubar.add_cascade(label="File", menu=filemenu)
     root.config(menu=menubar)
