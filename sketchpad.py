@@ -12,6 +12,8 @@ class Sketchpad(Canvas):
         self.bind("<B1-Motion>", self.draw)
         self.bind("<ButtonRelease-1>", self.complete_drawing)
         self.drawings = {}
+        self.max_x = None
+        self.max_y = None
         self.parent = parent
         self.toolController = toolController
         
@@ -20,7 +22,7 @@ class Sketchpad(Canvas):
         if toolSelected != None and not self.is_drawing:
             self.is_drawing = True
             if toolSelected == "Line":
-                self.current_drawing = Line(self, event.x, event.y)
+                self.current_drawing = Line(self, event.x, event.y, self.max_x, self.max_y)
             elif toolSelected == "Circle":
                 self.current_drawing = Circle(self, event.x, event.y)
         else:
@@ -47,12 +49,12 @@ class Sketchpad(Canvas):
     def draw_grid_overlay(self, grid_size):
         self.update_idletasks()
         print(self.winfo_height())
-        window_height = self.winfo_height()
-        window_width = self.winfo_width()
+        self.max_y = self.winfo_height()
+        self.max_x = self.winfo_width()
         
-        for r in range(0,window_width,grid_size):
-            self.create_line((r,0,r,window_height), width=0.5, fill="gray85")
+        for r in range(0,self.max_x,grid_size):
+            self.create_line((r,0,r,self.max_y), width=0.5, fill="gray85")
 
-        for r in range(0,window_height,grid_size):
-            self.create_line((0,r,window_width,r), width=0.5, fill="gray85")
+        for r in range(0,self.max_y,grid_size):
+            self.create_line((0,r,self.max_x,r), width=0.5, fill="gray85")
 

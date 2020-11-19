@@ -17,7 +17,7 @@ def buildMenu():
     menubar = Menu(root)
     filemenu = Menu(menubar, tearoff=0)
 
-    filecad = FileCAD() # this needs to be called in a way that it can be passed the drawing properties...
+    file_cad = FileCAD() # this needs to be called in a way that it can be passed the drawing properties...
 
     filemenu.add_command(label="open", command=donothing)
     filemenu.add_command(label="save", command=donothing)
