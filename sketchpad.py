@@ -1,6 +1,6 @@
 from tkinter import *
 from line import Line
-from circle import Circle
+from oval import Oval
 
 class Sketchpad(Canvas):
     def __init__(self, parent, toolController, **kwargs):
@@ -23,8 +23,8 @@ class Sketchpad(Canvas):
             self.is_drawing = True
             if toolSelected == "Line":
                 self.current_drawing = Line(self, event.x, event.y, self.max_x, self.max_y)
-            elif toolSelected == "Circle":
-                self.current_drawing = Circle(self, event.x, event.y)
+            elif toolSelected == "Oval":
+                self.current_drawing = Oval(self, event.x, event.y)
         else:
             print("no tool is selected...")
     
@@ -49,6 +49,7 @@ class Sketchpad(Canvas):
     def draw_grid_overlay(self, grid_size):
         self.update_idletasks()
         print(self.winfo_height())
+        #this is a bad place to do this... fix this
         self.max_y = self.winfo_height()
         self.max_x = self.winfo_width()
         

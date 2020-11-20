@@ -10,12 +10,10 @@ class Line:
 
     
     def draw(self, new_x, new_y):
-        print("drawing line..")
         self.id = self.canvas.create_line((self.start_x, self.start_y, min(new_x, self.max_x), min(self.max_y,new_y)), width=3)
         self.end_x, self.end_y = new_x, new_y
 
     def delete(self):
-        print("deleting line..")
         self.canvas.delete(self.id)
     
     def get_props(self):
