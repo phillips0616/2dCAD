@@ -21,4 +21,4 @@ class Oval:
         self.canvas.delete(self.id)
     
     def get_props(self):
-        return ["Circle", self.start_x, self.start_y, self.end_x, self.end_y]
+        return ["Oval", self.start_x, self.start_y, self.end_x, self.end_y]

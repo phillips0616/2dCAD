@@ -41,10 +41,6 @@ class App:
         self.sketchpad.pack(expand=True, fill='both')
         self.sketchpad.draw_grid_overlay(18)
 
-
-    
-
-
 root = Tk()
 root.geometry("800x800")
 root.update_idletasks() 

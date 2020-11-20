@@ -59,11 +59,23 @@ class Sketchpad(Canvas):
         for r in range(0,self.max_y,grid_size):
             self.create_line((0,r,self.max_x,r), width=0.5, fill="gray85")
     
-    def clear_sketchbad(self):
+    def clear_sketchpad(self):
         for drawing in self.drawings.keys():
             self.delete(drawing)
 
         self.drawings.clear()
+
+    def load_drawing(self, tool, start_x, start_y, end_x, end_y):
+        toolSelected = tool
+        if toolSelected != None:
+            if toolSelected == "Line":
+                self.current_drawing = Line(self, start_x, start_y, self.max_x, self.max_y)
+            elif toolSelected == "Oval":
+                self.current_drawing = Oval(self, start_x, start_y, self.max_x, self.max_y)
+            self.current_drawing.draw(end_x, end_y)
+            self.drawings[self.current_drawing.id] = self.current_drawing.get_props()
+        else:
+            print("no tool is selected...")
         
 
 
