@@ -24,7 +24,7 @@ class Sketchpad(Canvas):
             if toolSelected == "Line":
                 self.current_drawing = Line(self, event.x, event.y, self.max_x, self.max_y)
             elif toolSelected == "Oval":
-                self.current_drawing = Oval(self, event.x, event.y)
+                self.current_drawing = Oval(self, event.x, event.y, self.max_x, self.max_y)
         else:
             print("no tool is selected...")
     
@@ -58,4 +58,12 @@ class Sketchpad(Canvas):
 
         for r in range(0,self.max_y,grid_size):
             self.create_line((0,r,self.max_x,r), width=0.5, fill="gray85")
+    
+    def clear_sketchbad(self):
+        for drawing in self.drawings.keys():
+            self.delete(drawing)
+
+        self.drawings.clear()
+        
+
 

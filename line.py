@@ -10,8 +10,10 @@ class Line:
 
     
     def draw(self, new_x, new_y):
-        self.id = self.canvas.create_line((self.start_x, self.start_y, min(new_x, self.max_x), min(self.max_y,new_y)), width=3)
-        self.end_x, self.end_y = new_x, new_y
+        safe_x = min(new_x, self.max_x) if min(new_x, self.max_x) > 0 else 0
+        safe_y = min(new_y, self.max_y) if min(new_y, self.max_y) > 0 else 0
+        self.id = self.canvas.create_line((self.start_x, self.start_y, safe_x, safe_y), width=3)
+        self.end_x, self.end_y = safe_x, safe_y
 
     def delete(self):
         self.canvas.delete(self.id)

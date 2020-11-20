@@ -22,5 +22,6 @@ class FileCAD:
             for item in value:
                 file.write(str(item) + ",")
             file.write("\n")
-            
-            
+    
+    def clear(self):
+        self.sketchpad.clear_sketchbad()

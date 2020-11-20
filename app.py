@@ -24,6 +24,7 @@ class App:
         filemenu.add_command(label="open", command=self.fileCAD.open_file)
         filemenu.add_command(label="save", command=self.fileCAD.save)
         filemenu.add_command(label="save as...", command=self.fileCAD.save_as)
+        filemenu.add_command(label="clear sketchpad", command=self.fileCAD.clear)
 
         menubar.add_cascade(label="File", menu=filemenu)
         self.root.config(menu=menubar)
