@@ -1,6 +1,7 @@
 from tkinter import *
 from line import Line
 from oval import Oval
+import math
 
 class Sketchpad(Canvas):
     def __init__(self, parent, toolController, **kwargs):
@@ -14,6 +15,7 @@ class Sketchpad(Canvas):
         self.drawings = {}
         self.max_x = None
         self.max_y = None
+        self.length_label = None
         self.parent = parent
         self.toolController = toolController
         
@@ -21,6 +23,8 @@ class Sketchpad(Canvas):
         toolSelected = self.toolController.get_curr_tool()
         if toolSelected != None and not self.is_drawing:
             self.is_drawing = True
+            self.length_label = Label(self)
+            self.length_label.pack(side=TOP, anchor=NE)
             if toolSelected == "Line":
                 self.current_drawing = Line(self, event.x, event.y, self.max_x, self.max_y)
             elif toolSelected == "Oval":
@@ -31,12 +35,14 @@ class Sketchpad(Canvas):
     def draw(self, event):
         if self.is_drawing:
             self.current_drawing.delete()
+            self.length_label['text'] = str(round(self.current_drawing.calculate_length(event.x, event.y),2)) + " in" #im sorry im American...
             self.current_drawing.draw(event.x, event.y)
 
     def complete_drawing(self, event):
         if self.is_drawing:
             self.drawings[self.current_drawing.id] = self.current_drawing.get_props()
             self.is_drawing = False
+            self.length_label.destroy()
         self.print_drawings()
     
     def print_drawings(self):
@@ -76,6 +82,7 @@ class Sketchpad(Canvas):
             self.drawings[self.current_drawing.id] = self.current_drawing.get_props()
         else:
             print("no tool is selected...")
+
         
 
 
