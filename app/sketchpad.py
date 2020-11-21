@@ -82,7 +82,3 @@ class Sketchpad(Canvas):
             self.drawings[self.current_drawing.id] = self.current_drawing.get_props()
         else:
             print("no tool is selected...")
-
-        
-
-

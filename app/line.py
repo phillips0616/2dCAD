@@ -24,7 +24,7 @@ class Line:
         return ["Line", self.start_x, self.start_y, self.end_x, self.end_y]
 
     def calculate_length(self, new_x, new_y):
-        square_board_length = 8
+        square_board_length = 12
         delta_x = abs(self.start_x - new_x)
         delta_y = abs(self.start_y - new_y)
 
