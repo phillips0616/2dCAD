@@ -46,7 +46,7 @@ root.geometry("800x800")
 root.update_idletasks() 
 
 app = App(root)
-app.add_tool_to_toolbar(r"images\oval.png", "Oval")
-app.add_tool_to_toolbar(r"images\line.png", "Line")
+app.add_tool_to_toolbar(r"app\images\oval.png", "Oval")
+app.add_tool_to_toolbar(r"app\images\line.png", "Line")
 
 root.mainloop()
