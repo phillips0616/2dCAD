@@ -19,7 +19,7 @@ class App:
     
     def build_filmenu_view(self):
         menubar = Menu(self.root)
-        filemenu = Menu(menubar, tearoff=0)
+        filemenu = Menu(menubar, tearoff=0) #I've made a change
 
         filemenu.add_command(label="open", command=self.fileCAD.open_file)
         filemenu.add_command(label="save", command=self.fileCAD.save)
