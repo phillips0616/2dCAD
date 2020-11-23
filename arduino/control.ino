@@ -1,3 +1,4 @@
+
 const int ledPin = 9; // the pin that the LED is attached to
 
 void setup() {
@@ -7,26 +8,42 @@ void setup() {
   pinMode(ledPin, OUTPUT);
 }
 
-String handleCommand() {
+String readCommand() {
   String command = "";
   char curChar = Serial.read();
   while(curChar != '\n' && Serial.available() > 0) {
     command += curChar;
     curChar = Serial.read();
   }
-  exeCommand(command);
+  exeGenericCommand(command);
 }
 
-void exeCommand(String command) {
+void moveToHomePosition() {
+
+}
+
+void movePenUp() {
+  
+}
+
+void movePenDown() {
+  
+}
+
+void exeMovementCommand(String shape, double startx, double starty, double endx, double endy) {
+  
+}
+
+void exeGenericCommand(String command) {
    //Serial.println("Executing command...");
-   if (command.equals("HIGH")) {
-     digitalWrite(ledPin, HIGH);
-     Serial.write('S'); //success
-   } else if (command.equals("LOW")) {
-     digitalWrite(ledPin, LOW);
-     Serial.write('S'); //success
+   if (command.equals("HOME")) {
+      moveToHomePosition();
+   } else if(command.equals("PENUP")) {
+      movePenUp();
+   } else if(command.equals("PENDOWN")) {
+     movePenDown();
    } else {
-     Serial.write('F');
+     //do something if the command is not understood
    }
 }
 
@@ -35,7 +52,7 @@ void loop() {
   if(Serial.available() > 0) {
     //delay to allow all of the bytes of the command to finish coming across
     delay(500);
-    handleCommand();
+    readCommand();
     //delay to allow all of the bytes of the command to be read
     delay(200);
   }
