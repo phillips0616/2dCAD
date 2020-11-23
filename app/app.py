@@ -3,6 +3,7 @@ import tkinter.font as font
 from tool_controller import ToolController
 from sketchpad import Sketchpad
 from file_cad import FileCAD
+import json
 
 class App:
     def __init__(self, root):
@@ -41,8 +42,12 @@ class App:
         self.sketchpad.pack(expand=True, fill='both')
         self.sketchpad.draw_grid_overlay(18)
 
+configs = {}
+with open(r"app\config.json") as json_file:
+    configs = json.load(json_file) 
+    
 root = Tk()
-root.geometry("800x800")
+root.geometry(str(configs["window_height"]) + "x" + str(configs["window_width"]))
 root.update_idletasks() 
 
 app = App(root)
